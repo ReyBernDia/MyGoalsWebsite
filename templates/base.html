@@ -1,0 +1,22 @@
+<html>
+  <head>
+    <title>{% block title %}TITLE HERE{% endblock %}</title>
+  </head>
+
+  <body>
+    <ul>
+        {% for message in get_flashed_messages() %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% if session.get('user_id',None) %}
+    <p><a href="/logout">Log Out</a></p>
+    {% else %}
+    <p><a href="/login">Log In</a></p>
+    <p><a href="/register">Register</a></p>
+    {% endif %}
+
+    {% block content %} put your content here {% endblock %}
+
+  </body>
+</html>
