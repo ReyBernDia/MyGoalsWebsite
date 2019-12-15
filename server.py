@@ -107,6 +107,21 @@ def add_new_goal():
     flash("New Goal Added!")
     return redirect('/user-page')
 
+@app.route('/edit_goal', methods=['POST'])
+def edit_goal():
+    """Edit existing user goal."""
+
+    goal = request.form.get('goal')
+    goal_id = request.form.get('goal_id')
+
+    edit_goal = Goals.query.filter(Goals.goal_id == goal_id).one()
+
+    edit_goal.u_goal = goal
+    db.session.add(edit_goal)
+    db.session.commit()
+
+    flash("You edited your goal!")
+    return redirect('/user-page')
 
 if __name__ == "__main__":
 
