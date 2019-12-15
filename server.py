@@ -123,6 +123,20 @@ def edit_goal():
     flash("You edited your goal!")
     return redirect('/user-page')
 
+@app.route('/remove_goal', methods=['POST'])
+def remove_goal():
+    """Remove existing user goal."""
+
+    goal_id = request.form.get('goal_id')
+
+    remove_goal = Goals.query.filter(Goals.goal_id == goal_id).one()
+
+    db.session.delete(remove_goal)
+    db.session.commit()
+
+    flash("You removed your goal!")
+    return redirect('/user-page')
+
 if __name__ == "__main__":
 
     app.debug = True
