@@ -5,9 +5,9 @@
 
   <h2>My Goals</h2>
     <ul>
-      {% for %}
+      {% for goals in user.goals %}
 
-        <li> {{}}</li>
+        <li> {{goals.u_goal}}</li>
         
       {% endfor %}
     </ul>
