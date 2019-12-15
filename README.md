@@ -1,4 +1,4 @@
-This is a site where users can register to add, view, and edit their goals. 
+This is a site where users can register to view, save, and edit goals they want to achieve. 
 
 ## Tech Stack 
 **Backend:** Python, Flask, PostgreSQL, SQLAlchemy
