@@ -66,6 +66,7 @@ def login_user():
     if user:
     #if matches, log in user (add user_id to flask session)
         session['user_id'] = user.user_id
+        session['email'] = user.email
         # flash- logged in
         flash("Successfully logged in!")
         #redirect to homepage
@@ -79,6 +80,7 @@ def logout_user():
     """Remove user from session and logout."""
 
     del session['user_id']
+    del session['email'] 
     flash("Successfully logged out!")
 
     return redirect('/')
