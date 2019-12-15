@@ -92,6 +92,22 @@ def display_user_page():
     return render_template('user_page.html', 
                             user=user)
 
+@app.route('/add_new', methods=['POST'])
+def add_new_goal():
+    """Process adding a new goal for a user."""
+
+    goal = request.form.get('goal')
+    user_id = session['user_id']
+
+    new_goal = Goals(user_id=user_id,
+                     u_goal=goal)
+    db.session.add(new_goal)
+    db.session.commit()
+
+    flash("New Goal Added!")
+    return redirect('/user-page')
+
+
 if __name__ == "__main__":
 
     app.debug = True

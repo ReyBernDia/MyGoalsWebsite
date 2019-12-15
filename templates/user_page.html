@@ -1,16 +1,28 @@
 {% extends 'base.html' %}
+{% block title %} User Profile {% endblock %}
 {% block content %}
 
   <h2>What is life without goals?</h2>
 
   <h2>My Goals</h2>
-    <ul>
-      {% for goals in user.goals %}
+    <div>
+      <h3>Add a New Goal:</h3>
+      <form action="/add_new", method = "POST">
+          <input type="text" name="goal" maxlength="200">
+          <input type="submit" value="Add">
+      </form>
+    </div>
 
-        <li> {{goals.u_goal}}</li>
-        
-      {% endfor %}
-    </ul>
+    <div>
+        <ul>
+          {% for goals in user.goals %}
+
+            <li> {{goals.u_goal}}</li>
+            
+            
+          {% endfor %}
+        </ul>
+    </div>
 
 
 {% endblock %}
